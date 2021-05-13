@@ -1,10 +1,65 @@
-export function test() {
+import {
+    getMaximumPosts
+} from '../Services/Posts.service';
+import * as types from './ActionTypes';
+
+// const fetchAllPostFromReddit = (data) => {
+//     return {
+//         type: types.FETCH_POSTS,
+//         posts: data
+//     };
+// };
+
+
+const fetchAllPostFromReddit = data => {
+    return {
+      type: types.FETCH_POSTS,
+      payload: data
+    };
+  };
+
+// function fetchAllPosts () {
+//     return  (dispatch) => {
+//         try {
+//             const postsObtained = await getMaximumPosts();
+//             dispatch({
+//                 type: types.FETCH_POSTS,
+//                 posts: postsObtained
+//             });
+//         } catch (error) {
+//             // dispatch(registerError)
+//         }
+//     }
+// }
+
+// export function fetchPosts() {
+//     return (dispatch) => {
+//         dispatch(fetchAllPosts)
+//     }
+// }
+
+function fetchPosts (){
     return async (dispatch) => {
         try {
-            dispatch();
-
+            const postsObtained = await getMaximumPosts();
+            dispatch(fetchAllPostFromReddit(postsObtained))
+            // return {
+            //     type: types.FETCH_POSTS,
+            //     posts: postsObtained
+            // };
         } catch (error) {
             // dispatch(registerError)
         }
+    }
+}
+
+
+export function getFetchPosts() {
+    // return {
+    //     type: types.FETCH_POSTS,
+    //     data: 'hola'
+    //   };
+    return (dispatch) => {
+        dispatch(fetchPosts())
     }
 }

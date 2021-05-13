@@ -1,21 +1,22 @@
-import './App.css';
-import { useEffect } from 'react'
-import { getMaximumPosts } from './Services/Posts.service';
-import Dashboard from './Components/Dashboard';
+import "./App.css";
+import { useEffect } from "react";
+import { Provider } from "react-redux";
+import Dashboard from "./Components/Dashboard";
 
-function App() {
-
+function App({ store }) {
   useEffect(() => {
     async function fetchData() {
-      getMaximumPosts();
+      // getMaximumPosts();
     }
 
     fetchData();
-  }, [])
+  }, []);
   return (
-    <div className="App">
-     <Dashboard> </Dashboard>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Dashboard> </Dashboard>
+      </div>
+    </Provider>
   );
 }
 

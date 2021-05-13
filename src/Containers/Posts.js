@@ -1,32 +1,39 @@
-import React from 'react'
+import React from "react";
 import PropTypes from "prop-types";
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { useEffect } from "react";
+import * as actions from "../Actions/Posts";
 
-const Posts = () => {
-    return (
-        <div>
-            list of posts
-            
-        </div>
-    )
+const Posts = ({ actions, posts }) => {
+  useEffect(() => {
+    actions.getFetchPosts();
+  }, [actions]);
+  return (
+    //  <div> soy container</div>
+    <div>
+      {posts.map((post) => (
+        <div key={post.id}>{post.id}</div>
+      ))}
+    </div>
+  );
+};
+
+Posts.propTypes = {
+  actions: PropTypes.object.isRequired,
+  posts: PropTypes.array.isRequired,
+};
+
+function mapStateToProps(state) {
+  return {
+    posts: state.postsReducer.topPosts,
+  };
 }
 
-Posts.propTypes ={
-    actions: PropTpes.object.isRequired,
-    posts: PropTypes.object.isRequired
-}
-
-function mapStateToProps(state){
-    return {
-        posts: state.redditPosts
-    }
-}
-
-function mapDispatchToProps(dispatch){
-    return {
-        actions: bindActionCreators(actions, dispatch)
-    }
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch),
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Posts);

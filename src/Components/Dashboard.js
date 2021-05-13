@@ -1,8 +1,12 @@
-const Dashboard = () => {
+import Posts from "../Containers/Posts";
 
-    return (
-        <div>Soy Dashboard</div>
-    )
-}
+const Dashboard = () => {
+  return (
+    <>
+      <div>Soy Dashboard</div>
+      <Posts></Posts>
+    </>
+  );
+};
 
 export default Dashboard;

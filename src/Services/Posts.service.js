@@ -21,8 +21,6 @@ const getMaximumPosts = async () => {
 
             }
         })
-        console.log('data received:', data);
-        console.log('data received:', formattedData);
         return formattedData;
 
     } catch (error) {
