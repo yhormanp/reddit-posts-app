@@ -1,0 +1,3 @@
+export const DISSMISS_POST = 'DISSMISS_POST';
+export const DISSMISS_ALL_POSTS = 'DISSMISS_ALL_POSTS';
+export const SAVE_IMAGE = 'SAVE_IMAGE';
