@@ -1,38 +1,142 @@
-.App {
-  text-align: center;
+
+
+/****** Posts Container content begin*********/
+
+.container {
+  width: 98%;
+  /* background-color: red; */
+  margin-left: 15px;
+  
+}
+.main-posts {
+  width: 32%;
+  background-color: lightgray;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.posts-list-title{
+  font-size: 2rem;
+  font-weight: 500;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/****** Posts Container   content end*********/
+
+
+
+
+.post-ppal{
+  width: 95%;
+  border-radius: 3px;
+  border: solid 1px black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+/****** Shared properties begin*********/
+
+.banner, .post-details, .footer, .container {
   display: flex;
-  flex-direction: column;
+}
+
+
+
+.margin-left {
+  margin-left: 15px;
+}
+.margin-top {
+  margin-top: 5px;
+}
+.margin-bottom {
+  margin-bottom: 5px;
+}
+
+/****** Shared properties end*********/
+
+
+
+/****** post Header content begin*********/
+
+.banner{
+  flex: auto;
+}
+
+.post-status{
+  border-radius: 50%;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: blue;
+  margin: 12px 20px 10px 15px;
+}
+
+.post-title{
+  font-size: 1.4rem;
+ 
+}
+
+.post-hours {
+  margin-left: auto;
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+/****** post Header content end*********/
+
+
+/****** post details content begin*********/
+
+.post-details {
   align-items: center;
+}
+
+.post-image{
+  width: 120px;
+  height: 90px;
+}
+
+.img-not-found.img-not-found{
+  width: 120px;
+  height: 90px;
+}
+
+.post-text {
+
+  display: block;
+  display: -webkit-box;
+  max-height: 50px;
+  line-height: 1;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 10px;
+  text-align: justify;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+/****** post details content end*********/
+
+
+
+/****** post footer content begin*********/
+
+.footer{
+  align-items: center;
+  flex:auto;
+  margin-bottom: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+
+.footer > span.post-action-text {
+  font-size: 1.2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.post-comments{
+  margin-left: auto;
+  margin-right: 15px;
+  font-size: 1.2rem;
 }
+
+.action-dismiss {
+  color: red;
+}
+/****** post footer content begin*********/
+
+
+

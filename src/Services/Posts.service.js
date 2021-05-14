@@ -14,7 +14,10 @@ const getMaximumPosts = async () => {
                 title: baseData.title,
                 author: baseData.author_fullname,
                 created_utc: baseData.created_utc,
-                thumbnail: baseData.thumbnail,
+                since: 0,
+                thumbnail: baseData.thumbnail.indexOf("http") != -1 ?  baseData.thumbnail: null,
+                // thumbnail: baseData.thumbnail,
+
                 full_image: baseData.url,
                 num_comments: baseData.num_comments,
                 visited: baseData.visited,
