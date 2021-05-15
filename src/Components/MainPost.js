@@ -1,10 +1,9 @@
 import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import CancelPresentationOutlinedIcon from "@material-ui/icons/CancelPresentationOutlined";
-import red from "@material-ui/core/colors/red";
 
-const MainPost = ({ data }) => {
+const MainPost = ({ data, onPostClicked }) => {
   return (
-    <div className="post-ppal margin-left margin-top">
+    <div className="post-ppal margin-left margin-top" onClick={() => onPostClicked(data)}>
       <div className="banner">
         <span className="post-status"></span>
         {/* <div className="post-title"></div> */}
@@ -28,12 +27,10 @@ const MainPost = ({ data }) => {
       </div>
       <div className="footer margin-left">
         <HighlightOffIcon color="error" fontSize="large">
-          {" "}
         </HighlightOffIcon>
 
         <span className="post-action-text">Dismiss Post</span>
         <span className="post-comments">{data.num_comments} Comments</span>
-        {/* </div> */}
       </div>
     </div>
   );

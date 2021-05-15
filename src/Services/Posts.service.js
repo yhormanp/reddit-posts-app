@@ -6,9 +6,10 @@ const getMaximumPosts = async () => {
         const {
             data
         } = await axios.get(`${process.env.REACT_APP_API_URL}?limit=${process.env.REACT_APP_MAXIMUM_POSTS}`)
-
+        console.log('received data', data);
         const formattedData = data.data.children.map(info => {
             const baseData = info.data;
+            
             return {
                 id: baseData.id,
                 title: baseData.title,

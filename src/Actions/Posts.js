@@ -18,6 +18,13 @@ const fetchAllPostFromReddit = data => {
     };
   };
 
+const updateUnreadStatusOnPost = data => {
+    return {
+        type: types.UPDATE_UNREAD_STATUS,
+        payload: data
+    }
+}
+
 // function fetchAllPosts () {
 //     return  (dispatch) => {
 //         try {
