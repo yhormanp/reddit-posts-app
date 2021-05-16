@@ -21,10 +21,9 @@
   font-weight: 500;
 }
 
-.posts-list-scrollable{
+.posts-list-scrollable {
   height: 94vh;
   overflow: auto;
-  
 }
 
 /****** Posts Container   content end*********/
@@ -69,6 +68,10 @@
   height: 12px;
   background-color: blue;
   margin: 12px 20px 10px 15px;
+}
+
+.status-read {
+  visibility: hidden;
 }
 
 .post-title {
@@ -121,6 +124,11 @@
   margin-bottom: 10px;
 }
 
+.post-action-pack {
+  display: flex;
+  align-items: center;
+}
+
 .post-action-text {
   font-size: 1.2rem;
 }
@@ -151,6 +159,26 @@
 }
 /****** post description begin*********/
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.pagination > li {
+  list-style-type: none;
+  background: #fafafa;
+  padding: 8px;
+  border: solid 1px black;
+  
+}
+
+
+.pagination > li.page-current{
+  background-color: lightblue;
+
+}
+
 @media only screen and (max-width: 850px) {
   body {
     background-color: lightblue;
@@ -159,7 +187,7 @@
   .banner {
     display: block;
   }
-  
+
   .post-ppal {
     width: 27vw;
   }
@@ -169,13 +197,13 @@
 
   .post-title {
     font-size: 1.1rem;
-    font-weight: 700 ;    
+    font-weight: 700;
   }
 
-  .post-status{
+  .post-status {
     height: 12px;
     background-color: blue;
-    margin: 5px 15px 2px 15px
+    margin: 5px 15px 2px 15px;
   }
 
   .post-hours {
@@ -185,23 +213,20 @@
 
   .footer {
     display: block;
-    
   }
-  .post-action-text{
+  .post-action-text {
     /* display: inline-block; */
     font-size: 1rem;
-    vertical-align:  middle;
+    vertical-align: middle;
   }
 
-  .post-comments{
+  .post-comments {
     /* display: block; */
   }
-
-
 
   .post-comments {
     display: block;
     font-size: 1.1rem;
-    font-weight: 500 ;    
+    font-weight: 500;
   }
 }

@@ -18,9 +18,23 @@ const fetchAllPostFromReddit = data => {
     };
   };
 
-const updateUnreadStatusOnPost = data => {
+export const updateUnreadStatusOnPost = data => {
     return {
         type: types.UPDATE_UNREAD_STATUS,
+        payload: data
+    }
+}
+
+export const dismissAPost = data => {
+    return {
+        type: types.DISSMISS_POST,
+        payload: data
+    }
+}
+
+export const updatePageIndex = data => {
+    return {
+        type: types.UPDATE_CURRENT_PAGE_INDEX,
         payload: data
     }
 }

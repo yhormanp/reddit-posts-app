@@ -1,15 +1,74 @@
-import { FETCH_POSTS  } from '../Actions/ActionTypes'
-import {initialState} from  './initialState'
+import {
+    FETCH_POSTS,
+    UPDATE_UNREAD_STATUS,
+    DISSMISS_POST,
+    UPDATE_CURRENT_PAGE_INDEX
+} from '../Actions/ActionTypes'
+import {
+    initialState
+} from './initialState'
 
+function getCurrentPagedPosts(postsList, paginateValues) {
+    const indexOfLastPost = paginateValues.page * paginateValues.pageSize;
+    const indexOfFirstPost = indexOfLastPost - paginateValues.pageSize;
+    const currentPosts = postsList.slice(indexOfFirstPost, indexOfLastPost)
+    console.log('posts filtered:', currentPosts)
 
-export default function postsReducer (state = initialState().posts, action){
-    let list;
+    return currentPosts;
+}
+
+export default function postsReducer(state = initialState().posts, action) {
+    let list, postIndex, updatedCurrentPosts;
+    list = state.topPosts;
+    postIndex = state.topPosts.findIndex(p => p.id === action.payload.id);
     switch (action.type) {
         case FETCH_POSTS:
             list = state.topPosts;
-            list= [...list, ...action.payload]
-            return {...state, topPosts: list}
-        default:
-            return state;
+            updatedCurrentPosts = getCurrentPagedPosts(action.payload, state.paginate);
+
+            list = [...list, ...action.payload]
+            return {
+                ...state, topPosts: list, currentPosts: updatedCurrentPosts
+            };
+        case UPDATE_UNREAD_STATUS:
+            if (postIndex >= 0) {
+                list = [
+                    ...state.topPosts.slice(0, postIndex),
+                    {
+                        ...state.topPosts[postIndex],
+                        visited: true
+                    },
+                    ...state.topPosts.slice(postIndex + 1)
+                ];
+            }
+
+            updatedCurrentPosts = getCurrentPagedPosts(list, state.paginate);
+            return {
+                ...state, topPosts: list, currentPosts: updatedCurrentPosts
+            };
+
+        case DISSMISS_POST:
+            if (postIndex >= 0) {
+                list = [
+                    ...state.topPosts.slice(0, postIndex),
+                    ...state.topPosts.slice(postIndex + 1)
+                ];
+                updatedCurrentPosts = getCurrentPagedPosts(list, state.paginate);
+            }
+            return {
+                ...state, topPosts: list, currentPosts: updatedCurrentPosts
+            };
+        case UPDATE_CURRENT_PAGE_INDEX:
+            const newPaginate = {
+                ...state.paginate,
+                page: action.payload
+            }
+            
+            updatedCurrentPosts = getCurrentPagedPosts(list, newPaginate);
+            return {
+                ...state, currentPosts: updatedCurrentPosts, paginate: newPaginate
+            }
+            default:
+                return state;
     }
 }
