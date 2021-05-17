@@ -132,6 +132,7 @@
 .post-action-text {
   font-size: 1.2rem;
   color: #f44336;
+  cursor: default;
 }
 
 .post-comments {
@@ -186,6 +187,7 @@
 
 .dismiss-all-text {
   color: #f44336;
+  cursor: default;
 }
 
 @media only screen and (max-width: 850px) {
@@ -227,10 +229,7 @@
     /* display: inline-block; */
     font-size: 1rem;
     vertical-align: middle;
-  }
-
-  .post-comments {
-    /* display: block; */
+    
   }
 
   .post-comments {

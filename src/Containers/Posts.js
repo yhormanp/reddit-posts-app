@@ -10,15 +10,13 @@ import Pagination from "../Components/Pagination";
 import Dismiss from "../Components/Dismiss";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 
-const Posts = ({ actions, posts, currentPosts, paginate }) => {
+const Posts = ({ actions, posts, currentPosts, paginate, loading }) => {
   const [currentPostSelected, setCurrentPostSelecte] = useState(null);
-  const [loading, setLoading] = useState(false);
+//   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     actions.getFetchPosts();
 
-    setLoading(false);
   }, [actions]);
 
   const currentPostSelect = (postData) => {
@@ -50,11 +48,11 @@ const Posts = ({ actions, posts, currentPosts, paginate }) => {
     );
   };
   return (
-    //  <div> soy container</div>
     <div className="container">
-      {/* {loading && <div>I am loading data</div>} */}
+      
       <div className="main-posts">
         <span className="posts-list-title margin-left">Reddit Posts List</span>
+        {loading && <h3 className="margin-left">Loading data ...</h3> }
         <div className="posts-list-scrollable">
           {renderPaginationComponent()}
           {currentPosts.map((post) => (
@@ -83,6 +81,7 @@ Posts.propTypes = {
   posts: PropTypes.array.isRequired,
   currentPosts: PropTypes.array.isRequired,
   paginate: PropTypes.object.isRequired,
+//   loading: 
 };
 
 function mapStateToProps(state) {
@@ -90,6 +89,7 @@ function mapStateToProps(state) {
     posts: state.postsReducer.topPosts,
     currentPosts: state.postsReducer.currentPosts,
     paginate: state.postsReducer.paginate,
+    loading: state.postsReducer.loading
   };
 }
 

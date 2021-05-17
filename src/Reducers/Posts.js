@@ -30,7 +30,7 @@ export default function postsReducer(state = initialState().posts, action) {
 
             list = [...list, ...action.payload]
             return {
-                ...state, topPosts: list, currentPosts: updatedCurrentPosts
+                ...state, topPosts: list, currentPosts: updatedCurrentPosts, loading: false
             };
         case UPDATE_UNREAD_STATUS:
             postIndex = state.topPosts.findIndex(p => p.id === action.payload.id);

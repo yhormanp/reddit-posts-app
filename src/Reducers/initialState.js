@@ -5,7 +5,8 @@ export const initialState = () => ({
             pageSize: 10
         },
         topPosts: [],
-        currentPosts: []
+        currentPosts: [],
+        loading: true
     }
    
 
