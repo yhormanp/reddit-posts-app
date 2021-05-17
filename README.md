@@ -1,3 +1,34 @@
+# REDDIT POSTS APP
+
+application created using create-react-app and redux to list the first 50 posts from https://www.reddit.com/top.json. There are a few actiosn implemented to validate the read status from each posts, dismiss a post and dismiss all posts.  Split layout was implemented to separate the posts and it's details, included responsive designs
+
+# STRUCTURE
+Based on Redux, I created several folders that will contain each important component of Redux like
+- Store: Where the initial store is configured
+- Actions: Where the actions definitions and the action types are defined
+- Reducers: where the combine reducers is implemented and it's respective reducer to execute the process of each action . Actions implemented in the reducer
+ * 'DISSMISS_POST': triggered when the user clicked on the acton "dismiss post" on each post.
+ * 'DISSMISS_ALL_POSTS': triggered when the user clicked on the bottom button of "Dismiss all posts"
+ * 'UPDATE_CURRENT_PAGE_INDEX': update the state of the current page visisted.
+ * "FETCH_POSTS": triggered automatically to obtain the list of 50 posts.
+ * 'UPDATE_UNREAD_STATUS': every time the user clicked a post , the unread status will be udpated.
+ 
+- Containers: Where the main component to list the posts is created and the state and actions are mapped to props to manage every action trigger in the inner components.
+- Services: A service created to get all the 50 posts from  https://www.reddit.com/top.json
+- Components: all the Components used in the react application to interact with the posts obtained and trigger the necessary action when it's required.
+
+- Index.js: where the initial configuration of the store is implemented and passed through the Dashboard componentn using the store property and used after this with the Provider of React Redux
+
+
+
+
+
+
+
+!IMPORTANT:
+Css-transition-group is used to give the animation effect, but due to some issues with the  animation on each post, I just decided to remove it. For now no animation was implemented.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

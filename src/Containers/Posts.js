@@ -7,6 +7,8 @@ import * as actions from "../Actions/Posts";
 import MainPost from "../Components/MainPost";
 import PostDescription from "../Components/PostDescription";
 import Pagination from "../Components/Pagination";
+import Dismiss from "../Components/Dismiss";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const Posts = ({ actions, posts, currentPosts, paginate }) => {
   const [currentPostSelected, setCurrentPostSelecte] = useState(null);
@@ -29,6 +31,10 @@ const Posts = ({ actions, posts, currentPosts, paginate }) => {
     actions.dismissAPost(postData);
   };
 
+  const onDismissAllPosts = () => {
+    actions.dismissAllPosts();
+  };
+
   const onNewPage = (newPageIndex) => {
     actions.updatePageIndex(newPageIndex);
   };
@@ -46,20 +52,23 @@ const Posts = ({ actions, posts, currentPosts, paginate }) => {
   return (
     //  <div> soy container</div>
     <div className="container">
-      {loading && <div>I am loading data</div>}
+      {/* {loading && <div>I am loading data</div>} */}
       <div className="main-posts">
         <span className="posts-list-title margin-left">Reddit Posts List</span>
         <div className="posts-list-scrollable">
           {renderPaginationComponent()}
           {currentPosts.map((post) => (
-            <MainPost
-              key={post.id}
-              data={post}
-              onPostClicked={currentPostSelect}
-              onDismissPost={onDismissPost}
-            ></MainPost>
+              <MainPost
+                key={post.id}
+                data={post}
+                onPostClicked={currentPostSelect}
+                onDismissPost={onDismissPost}
+              ></MainPost>
           ))}
           {renderPaginationComponent()}
+        </div>
+        <div>
+          <Dismiss onDismissAllPosts={onDismissAllPosts}></Dismiss>{" "}
         </div>
       </div>
       <div className="post-description">
